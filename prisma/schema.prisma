@@ -1,0 +1,21 @@
+// What is provider? 
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Information of Database
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Definition of Tables through the model
+model Book {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  bar_code    String @unique // arquivo único
+
+  @@map("books")
+}
